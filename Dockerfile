@@ -16,6 +16,7 @@ RUN \
       curl && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache \
+      chromaprint \
       icu-libs \
       libintl \
       libmediainfo \
