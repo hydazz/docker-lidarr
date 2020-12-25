@@ -44,10 +44,10 @@ jobs:
       - name: Build The Docker Image
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
-          LIDARR_VERSION: ${{ steps.variables.outputs.LIDARR_VERSION }}
+          LIDARR_RELEASE: ${{ steps.variables.outputs.LIDARR_RELEASE }}
           LIDARR_BRANCH: ${{ steps.variables.outputs.LIDARR_BRANCH }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg LIDARR_BRANCH="$LIDARR_BRANCH" --build-arg LIDARR_VERSION="$LIDARR_VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg LIDARR_BRANCH="$LIDARR_BRANCH" --build-arg LIDARR_RELEASE="$LIDARR_RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
       - name: Get New Package Versions From Image
         id: packages
@@ -58,19 +58,19 @@ jobs:
           docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp "$DOCKERHUB_IMAGE":cibuild -c '\
             apk info -v | sort >/tmp/package_versions.txt'
           echo "::set-output name=NEW_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
-          echo "::set-output name=OLD_LIDARR_VERSION::$(cat version_info.json | jq -r .lidarr_version)"
+          echo "::set-output name=OLD_LIDARR_RELEASE::$(cat version_info.json | jq -r .lidarr_release)"
 
       - name: Update README.md
         id: readme
         env:
-          LIDARR_VERSION: ${{ steps.variables.outputs.LIDARR_VERSION }}
+          LIDARR_RELEASE: ${{ steps.variables.outputs.LIDARR_RELEASE }}
         run: |
           echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
           chmod +x update_version_info.sh && ./update_version_info.sh
           echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
       - name: Commit And Push Changes To Github
-        if: steps.variables.outputs.LIDARR_VERSION != steps.packages.outputs.OLD_LIDARR_VERSION
+        if: steps.variables.outputs.LIDARR_RELEASE != steps.packages.outputs.OLD_LIDARR_RELEASE
         env:
           GIT_USER: ${{ steps.variables.outputs.GIT_USER }}
           GIT_REPO: ${{ steps.variables.outputs.GIT_REPO }}
@@ -82,7 +82,7 @@ jobs:
           git push https://"$GIT_USER":"$GITHUB_TOKEN"@github.com/"$GIT_USER"/"$GIT_REPO".git $GIT_BRANCH
 
       - name: Tag And Push Docker Image
-        if: steps.variables.outputs.LIDARR_VERSION != steps.packages.outputs.OLD_LIDARR_VERSION
+        if: steps.variables.outputs.LIDARR_RELEASE != steps.packages.outputs.OLD_LIDARR_RELEASE
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}
