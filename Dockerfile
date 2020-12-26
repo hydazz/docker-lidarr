@@ -15,7 +15,7 @@ RUN \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
    echo "**** install runtime packages ****" && \
-   apk add --no-cache \
+   apk add --no-cache --upgrade \
       chromaprint \
       icu-libs \
       libintl \
