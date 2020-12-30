@@ -25,10 +25,10 @@ RUN \
    echo "**** install lidarr ****" && \
    mkdir -p /app/lidarr/bin && \
    curl -o \
-   /tmp/lidarr.tar.gz -L \
+      /tmp/lidarr.tar.gz -L \
       "https://lidarr.servarr.com/v1/update/${LIDARR_BRANCH}/updatefile?version=${LIDARR_RELEASE}&os=linuxmusl&runtime=netcore&arch=x64" && \
    tar xzf \
-   /tmp/lidarr.tar.gz -C \
+      /tmp/lidarr.tar.gz -C \
       /app/lidarr/bin --strip-components=1 && \
    printf "UpdateMethod=docker\nBranch=${LIDARR_BRANCH}\n" > /app/lidarr/package_info && \
    echo "**** cleanup ****" && \
