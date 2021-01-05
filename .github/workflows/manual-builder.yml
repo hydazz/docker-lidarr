@@ -1,8 +1,13 @@
-name: Cron Update CI
+name: Manual Builder CI
 
 on:
-  schedule:
-    - cron: "10 11 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/Dockerfile"
+      - "root/**"
 
 jobs:
   latest:
@@ -52,7 +57,6 @@ jobs:
           docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp "$DOCKERHUB_IMAGE":cibuild -c '\
             apk info -v | sort >/tmp/package_versions.txt'
           echo "::set-output name=NEW_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
-          echo "::set-output name=OLD_LIDARR_RELEASE::$(cat version_info.json | jq -r .lidarr_release)"
 
       - name: Update README.md
         id: readme
@@ -64,14 +68,13 @@ jobs:
           echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
       - name: Commit And Push Changes To Github
-        if: steps.variables.outputs.LIDARR_RELEASE != steps.packages.outputs.OLD_LIDARR_RELEASE
+        if: steps.readme.outputs.OLD_MD5 != steps.readme.outputs.NEW_MD5 || steps.packages.outputs.OLD_MD5 != steps.packages.outputs.NEW_MD5
         run: |
           git add -A
           git commit -m 'Bot Updating Files'
           git push
 
       - name: Tag And Push Docker Image
-        if: steps.variables.outputs.LIDARR_RELEASE != steps.packages.outputs.OLD_LIDARR_RELEASE
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}
