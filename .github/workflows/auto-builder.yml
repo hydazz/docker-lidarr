@@ -2,7 +2,7 @@ name: Auto Builder CI
 
 on:
   schedule:
-    - cron: "5 0 * * 0"
+    - cron: "5 0 * * 0" # L2 image
   release:
     types:
       - released
@@ -43,7 +43,7 @@ jobs:
         env:
           VERSION: ${{ steps.variables.outputs.VERSION }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg LIDARR_BRANCH="${LIDARR_BRANCH}" --build-arg LIDARR_RELEASE="${LIDARR_RELEASE}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg LIDARR_BRANCH="${LIDARR_BRANCH}" --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 
       - name: Get New Package Versions From Image
         run: |
