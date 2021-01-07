@@ -4,7 +4,7 @@ FROM vcxpz/baseimage-alpine
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Lidarr version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="Alex Hyde"
+LABEL maintainer="hydaz"
 
 # environment settings
 ARG LIDARR_BRANCH
