@@ -27,11 +27,17 @@ docker run -d \
   vcxpz/lidarr
 ```
 
+## New Environment Variables
+### Debug
+| Name | Description | Default Value |
+|-|-|-|
+| `DEBUG` | set `true` to display errors in the Docker logs. When set to `false` the Docker log is completely muted. | `false` |
+
+**See other variables on the official [README](https://github.com/linuxserver/docker-lidarr/)**
+
 ## Upgrading Lidarr
 To upgrade, all you have to do is pull our latest Docker image. We automatically check for Lidarr updates daily so there may be some delay when an update is released to when the image is updated.
 
 ## Credits
 * [spritsail/lidarr](https://github.com/spritsail/lidarr) for the `HEALTHCHECK` command
 * [hotio](https://github.com/hotio) for the `redirect_cmd` function
-
-**Read the official [README](https://github.com/linuxserver/docker-lidarr/) for more information**
