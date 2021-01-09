@@ -4,7 +4,7 @@ UMASK_SET=${UMASK_SET:-022}
 umask "$UMASK_SET"
 
 redirect_cmd() {
-	if [ "${DEBUG}" = "true" ]; then
+	if [[ "${DEBUG}" == "true" ]]; then
 		"$@"
 	else
 		"$@" >/dev/null 2>&1
@@ -13,4 +13,5 @@ redirect_cmd() {
 
 redirect_cmd exec s6-setuidgid abc \
 	/app/lidarr/bin/Lidarr \
-	-nobrowser -data=/config
+	-nobrowser \
+	-data=/config
