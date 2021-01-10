@@ -24,7 +24,11 @@ RUN set -xe && \
    echo "**** install fpcalc ****" && \
    curl -o \
       /tmp/fpcalc.tar.gz -L \
-      "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-i686.tar.gz" && \
+      "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-x86_64.tar.gz" && \
+   tar xzf \
+      /tmp/fpcalc.tar.gz -C \
+      /tmp/ --strip-components=2 && \
+   mv /tmp/fpcalc /usr/local/bin && \
    echo "**** install lidarr ****" && \
    mkdir -p /app/lidarr/bin && \
    curl -o \
