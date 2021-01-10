@@ -10,18 +10,21 @@ LABEL maintainer="hydaz"
 ARG LIDARR_BRANCH
 ENV XDG_CONFIG_HOME="/config/xdg"
 
-RUN set -x && \
+RUN set -xe && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      chromaprint \
       icu-libs \
       libintl \
       libmediainfo \
       sqlite-libs \
       xmlstarlet && \
+   echo "**** install fpcalc ****" && \
+   curl -o \
+      /tmp/fpcalc.tar.gz -L \
+      "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-i686.tar.gz" && \
    echo "**** install lidarr ****" && \
    mkdir -p /app/lidarr/bin && \
    curl -o \
