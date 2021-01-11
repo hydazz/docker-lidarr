@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine
+FROM vcxpz/baseimage-alpine-dotnet
 
 # set version label
 ARG BUILD_DATE
@@ -16,8 +16,6 @@ RUN set -xe && \
       curl && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      icu-libs \
-      libintl \
       libmediainfo \
       sqlite-libs \
       xmlstarlet && \
