@@ -1,6 +1,6 @@
 ## docker-lidarr
 
-[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/lidarr) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/lidarr?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-lidarr/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/2901b73e66614f818c1d3f19b3b9ff21/main?style=for-the-badge)](https://app.codacy.com/gh/hydazz/docker-lidarr)
+[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/lidarr) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/lidarr?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-lidarr/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/2901b73e66614f818c1d3f19b3b9ff21/main?style=for-the-badge&logo=codacy)](https://app.codacy.com/gh/hydazz/docker-lidarr)
 
 Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr/)
 
@@ -10,7 +10,7 @@ Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr
 
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![lidarr](https://img.shields.io/badge/lidarr-0.8.0.1999-blue?style=for-the-badge)
 
-**[See here for a list of packages](https://github.com/hydazz/docker-lidarr/blob/main/package_versions.txt)**
+See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
 
 ## Usage
 
