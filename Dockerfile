@@ -15,7 +15,7 @@ RUN set -xe && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
    echo "**** install fpcalc ****" && \
-   curl -o \
+   curl --silent -o \
       /tmp/fpcalc.tar.gz -L \
       "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-fpcalc-1.5.0-linux-x86_64.tar.gz" && \
    tar xzf \
@@ -25,7 +25,7 @@ RUN set -xe && \
    echo "**** install lidarr ****" && \
    mkdir -p /app/lidarr/bin && \
    ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
-   curl -o \
+   curl --silent -o \
       /tmp/lidarr.tar.gz -L \
       "https://lidarr.servarr.com/v1/update/${LIDARR_BRANCH}/updatefile?version=${LIDARR_RELEASE}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
    tar xzf \
