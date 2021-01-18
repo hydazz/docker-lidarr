@@ -2,12 +2,12 @@ FROM vcxpz/baseimage-alpine-arr:latest
 
 # set version label
 ARG BUILD_DATE
-ARG LIDARR_RELEASE
-LABEL build_version="Lidarr version:- ${LIDARR_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="Lidarr version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ARG LIDARR_BRANCH
+ARG BRANCH
 ENV XDG_CONFIG_HOME="/config/xdg"
 
 RUN set -xe && \
@@ -27,11 +27,11 @@ RUN set -xe && \
    ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
    curl --silent -o \
       /tmp/lidarr.tar.gz -L \
-      "https://lidarr.servarr.com/v1/update/${LIDARR_BRANCH}/updatefile?version=${LIDARR_RELEASE}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
+      "https://lidarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
    tar xzf \
       /tmp/lidarr.tar.gz -C \
       /app/lidarr/bin --strip-components=1 && \
-   printf "UpdateMethod=docker\nBranch=${LIDARR_BRANCH}\n" > /app/lidarr/package_info && \
+   printf "UpdateMethod=docker\nBranch=${BRANCH}\n" > /app/lidarr/package_info && \
    echo "**** cleanup ****" && \
    apk del --purge \
       build-dependencies && \
