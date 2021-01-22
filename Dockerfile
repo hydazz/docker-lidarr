@@ -25,7 +25,7 @@ RUN \
    mv /tmp/fpcalc /usr/local/bin && \
    echo "**** install lidarr ****" && \
    mkdir -p /app/lidarr/bin && \
-   ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/archer.sh | bash) && \
+   ARCH=$(curl -sSL https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/archer.sh | bash) && \
    curl --silent -o \
      /tmp/lidarr.tar.gz -L \
      "https://lidarr.servarr.com/v1/update/${BRANCH}/updatefile?version=${VERSION}&os=linuxmusl&runtime=netcore&arch=${ARCH}" && \
