@@ -9,7 +9,6 @@ LABEL maintainer="hydaz"
 
 # environment settings
 ARG BRANCH
-ENV XDG_CONFIG_HOME="/config/xdg"
 
 RUN \
    echo "**** install build packages ****" && \
