@@ -8,7 +8,7 @@ Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr
 
 ## Version Information
 
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![lidarr](https://img.shields.io/badge/lidarr-0.8.0.2041-blue?style=for-the-badge)
+![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![lidarr](https://img.shields.io/badge/lidarr-0.8.0.2042-blue?style=for-the-badge)
 
 See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
 
@@ -31,8 +31,6 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
 [![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/readarr.xml)
 
 ## New Environment Variables
-
-### Debug
 
 | Name    | Description                                                                                              | Default Value |
 | ------- | -------------------------------------------------------------------------------------------------------- | ------------- |
