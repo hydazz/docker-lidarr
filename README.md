@@ -13,7 +13,6 @@ Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr
       -e PUID=1000 \
       -e PGID=1000 \
       -e TZ=Australia/Melbourne \
-      -e UMASK_SET=022 `#optional` \
       -e DEBUG=true/false `#optional` \
       -p 8686:8686 \
       -v <path to appdata>:/config \
