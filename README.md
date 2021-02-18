@@ -39,8 +39,8 @@ To upgrade, all you have to do is pull the latest Docker image. We automatically
 
 ## Credits
 
-- [spritsail/lidarr](https://github.com/spritsail/lidarr) for the `HEALTHCHECK` command
-- [hotio](https://github.com/hotio) for the `redirect_cmd` function
+-   [spritsail/lidarr](https://github.com/spritsail/lidarr) for the `HEALTHCHECK` command
+-   [hotio](https://github.com/hotio) for the `redirect_cmd` function
 
 ## Fixing Appdata Permissions
 
