@@ -31,7 +31,7 @@ RUN set -xe && \
 		exit 1; \
 	fi && \
 	echo "**** install lidarr ****" && \
-	if [ -z ${VERSION+x} ]; then \
+	if [ -z ${VERSION} ]; then \
 		VERSION=$(curl -sL "https://lidarr.servarr.com/v1/update/${BRANCH}/changes?os=linuxmusl" | jq -r '.[0].version'); \
 	fi && \
 	mkdir -p /app/lidarr/bin && \
