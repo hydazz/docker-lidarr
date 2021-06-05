@@ -2,7 +2,7 @@
 
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/lidarr) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/lidarr?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-lidarr/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/2901b73e66614f818c1d3f19b3b9ff21/main?style=for-the-badge&logo=codacy)](https://app.codacy.com/gh/hydazz/docker-lidarr)
 
-Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr/)
+Fork of [linuxserver/docker-lidarr](https://github.com/linuxserver/docker-lidarr/) (Equivalent to nightly-1.0.0.2226-ls50)
 
 [Lidarr](https://github.com/lidarr/Lidarr) is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.
 
